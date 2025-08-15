@@ -5,8 +5,9 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
   line-height: 1.6;
+  background-color: #210002;
+  color: #ffaf00;
 }
 
 ul,
@@ -20,6 +21,7 @@ a {
 }
 
 .main-nav {
+  font-family: "Arial", sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,7 +65,7 @@ a {
   background-color: #a34300;
 }
 
-.parallax-container {
+.parallax-section {
   position: relative;
   overflow: hidden;
   height: 100vh;
@@ -80,4 +82,84 @@ a {
   width: 100%;
   height: 100vh;
   object-fit: cover;
+}
+
+.available-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem;
+}
+
+.available-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.available-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5rem;
+  font-weight: normal;
+  margin-bottom: 3rem;
+}
+
+.available-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.available-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffaf00;
+  color: #210002;
+  width: 350px;
+  text-align: center;
+  padding: 0.1rem 0;
+}
+
+.available-item:hover {
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.buyicon {
+  height: 18px;
+  margin-right: 0.7rem;
+}
+
+.banner-right,
+.banner-left {
+  height: 35px;
+  width: 10px;
+}
+
+.banner-left {
+  position: absolute;
+  left: 0;
+}
+
+.banner-right {
+  position: absolute;
+  right: 0;
+}
+
+.available-description {
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+
+.video-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
 }
