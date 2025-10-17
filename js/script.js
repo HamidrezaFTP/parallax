@@ -14,10 +14,21 @@ const handleParallax = () => {
 
   // Move layers based on their data-speed
   layers.forEach((layer) => {
-    const speed = parseFloat(layer.dataset.speed);
+    const speed = parseFloat(layer.dataset.speed) || 0;
     const move = scrollProgress * 500 * speed;
     layer.style.transform = `translateY(${move}px)`;
   });
+};
+
+// Named scroll handler (prevents anonymous listeners and enables clean add/remove)
+const scrollHandler = () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      handleParallax();
+      ticking = false;
+    });
+    ticking = true;
+  }
 };
 
 // Only run parallax while section is visible
@@ -25,21 +36,24 @@ const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        window.addEventListener("scroll", () => {
-          if (!ticking) {
-            window.requestAnimationFrame(() => {
-              handleParallax();
-              ticking = false;
-            });
-            ticking = true;
-          }
-        });
+        // Add the named handler once
+        window.addEventListener("scroll", scrollHandler, { passive: true });
+        // Run one frame to ensure correct position when entering
+        handleParallax();
       } else {
-        window.removeEventListener("scroll", handleParallax);
+        // Remove the same named handler
+        window.removeEventListener("scroll", scrollHandler);
+        // Reset ticking so the handler can be re-used cleanly
+        ticking = false;
       }
     });
   },
   { threshold: 0.1 }
 );
 
-observer.observe(parallaxSection);
+if (parallaxSection) {
+  observer.observe(parallaxSection);
+} else {
+  // Defensive: if the section is missing, no-op but keep script safe
+  console.warn(".parallax-section not found — parallax disabled.");
+}
