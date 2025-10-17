@@ -11,6 +11,10 @@ body {
   height: 300vh;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 ul,
 li {
   list-style: none;
@@ -261,7 +265,7 @@ a {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.76);
   justify-content: center;
   align-items: center;
 }
@@ -273,11 +277,17 @@ a {
   display: block;
 }
 
+.lightbox-image {
+  width: 75%;
+  height: auto;
+  cursor: pointer;
+}
+
 .close,
 .prev,
 .next {
   position: absolute;
-  color: #fff;
+  color: #ffffffb9;
   font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
@@ -304,6 +314,6 @@ a {
 .counter {
   position: absolute;
   bottom: 20px;
-  color: #fff;
-  font-size: 1rem;
+  color: #ffffffb9;
+  font-size: 0.8rem;
 }

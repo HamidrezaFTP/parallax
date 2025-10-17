@@ -2,7 +2,16 @@
 
 const parallaxSection = document.querySelector(".parallax-section");
 const layers = document.querySelectorAll(".layer");
+const galleryGrid = document.querySelector(".gallery-grid");
+const lightbox = document.querySelector(".lightbox");
+const lightboxImage = document.querySelector(".lightbox-image");
+const closeBtn = document.querySelector(".close");
+const nextBtn = document.querySelector(".next");
+const prevBtn = document.querySelector(".prev");
+const counter = document.querySelector(".counter");
+
 let ticking = false;
+let currentIndex = 0;
 
 const handleParallax = () => {
   const scrollY = window.scrollY || window.pageYOffset;
@@ -57,3 +66,46 @@ if (parallaxSection) {
   // Defensive: if the section is missing, no-op but keep script safe
   console.warn(".parallax-section not found — parallax disabled.");
 }
+
+// Lightbox functionality
+const openLightbox = () => {
+  const totalImages = galleryGrid.children.length;
+  lightboxImage.src = galleryGrid.children[currentIndex].src;
+  counter.textContent = `${currentIndex + 1} of ${totalImages}`;
+  document.body.classList.add("no-scroll");
+};
+
+galleryGrid.addEventListener("click", (e) => {
+  const clickedImage = e.target.closest(".gallery-item");
+
+  if (!clickedImage) return;
+
+  currentIndex = [...galleryGrid.children].indexOf(clickedImage);
+  lightbox.style.display = "flex";
+  openLightbox();
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.style.display = "none";
+  document.body.classList.remove("no-scroll");
+});
+
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % galleryGrid.children.length;
+  openLightbox();
+});
+
+prevBtn.addEventListener("click", () => {
+  currentIndex =
+    (currentIndex - 1 + galleryGrid.children.length) %
+    galleryGrid.children.length;
+  openLightbox();
+});
+
+window.addEventListener("keydown", (e) => {
+  if (lightbox.style.display === "flex") {
+    if (e.key === "ArrowRight") nextBtn.click();
+    if (e.key === "ArrowLeft") prevBtn.click();
+    if (e.key === "Escape") closeBtn.click();
+  }
+});
