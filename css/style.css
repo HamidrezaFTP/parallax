@@ -317,3 +317,27 @@ a {
   color: #ffffffb9;
   font-size: 0.8rem;
 }
+
+.quote-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.quote-text {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  max-width: 550px;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+}
+
+.quote-source {
+  font-size: 1.2rem;
+  font-weight: 550;
+  letter-spacing: 0.3rem;
+  color: #a34300;
+  margin-bottom: 6rem;
+}
