@@ -341,3 +341,37 @@ a {
   color: #a34300;
   margin-bottom: 6rem;
 }
+
+.support-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.support-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a34300;
+  color: #210002;
+  width: 400px;
+  text-align: center;
+}
+
+.support-link {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+}
+
+.support-item:hover {
+  cursor: pointer;
+  background-color: #ffaf00;
+  transition: background-color 0.3s ease;
+}
+
+.shield-img {
+  height: 70px;
+}
