@@ -375,3 +375,51 @@ a {
 .shield-img {
   height: 70px;
 }
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.footer-info {
+  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 0.3rem;
+}
+
+.footer-info:hover {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+.footer-copy {
+  font-size: 0.9rem;
+  color: #a34300;
+  width: 550px;
+  letter-spacing: 0.2rem;
+  line-height: 2;
+}
+
+.footer-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6rem;
+  margin-top: 4rem;
+}
+
+.footer-logo {
+  height: 80px;
+  cursor: pointer;
+  background: #a34300;
+}
+
+.footer-logo:hover {
+  background: #ffaf00;
+  transition: background 0.3s ease;
+}
